@@ -1,28 +1,55 @@
 ---
-title: "p8105_hw1_deg2163"
+title: "P8105_HW1_deg2163"
+author: Diana Ballesteros Gonzalez 
+date: 2018-09-16
 output: github_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+Homework Assignment 1 
+
+#Problem 1
+Create a data frame comprised of:
+
+- A random sample of size 10 from a uniform [0,5] distribution.
+- A logical vector indicating whether elements of the sample are greater than 2.
+- A (length-10) character vector.
+- A (length-10) factor vector.
+
+```{r setup}
+library(tidyverse)
+
+## create data frame with four vectors 
+problem_one_df = tibble(
+  vec_numeric = runif(10, 0, 5), 
+  vec_char = c("My", "name", "is", "Diana", "Ballesteros", "Gonzalez", "and", "I", "love", "tacos."),
+  vec_logical = (vec_numeric > 2),
+  vec_factor = factor(c("red", "orange", "yellow", "green", "blue", "orange", "purple", "indigo", "black", "grey"))
+) 
 ```
 
-## R Markdown
+The mean is `r mean(problem_one_df$vec_numeric)`.
+The mean is `r mean(problem_one_df$vec_char)`.
+The mean is `r mean(problem_one_df$vec_logical)`.
+The mean is `r mean(problem_one_df$vec_factor)`.
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+# Problem 2
+Create a data frame comprised of:
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+- x: a random sample of size 1000 from a standard Normal distribution
+- y: a random sample of size 1000 from a standard Normal distribution
+- A logical vector indicating whether the x + y > 0
+- A numeric vector created by coercing the above logical vector
+- A factor vector created by coercing the above logical vector
 
-```{r cars}
-summary(cars)
+Here's a **code chunk** that samples from 
+a _normal distribution_:
+
+```{r}
+samp = rnorm(100)
+length(samp)
 ```
 
-## Including Plots
 
-You can also embed plots, for example:
 
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
