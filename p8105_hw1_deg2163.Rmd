@@ -33,7 +33,7 @@ problem_one_df = tibble(
 ) 
 ```
 
-* The mean for the a random sample of size 10from a uniform [0,5] distribution is `r mean(problem_one_df$vec_numeric)`. I was able to get a mean value for this vector because it averaged the 10 random numbers that it reproduced. 
+* The mean for the a random sample of size 10 from a uniform [0,5] distribution is `r mean(problem_one_df$vec_numeric)`. I was able to get a mean value for this vector because it averaged the 10 random numbers that it reproduced. 
 
 * The mean for a logical vector indicating whether elements of the sample are greater than 2 is `r mean(problem_one_df$vec_logical)`. I was able to get a mean value for this vector because it calculated the proportion of true statements out of the 10.
 
@@ -94,12 +94,20 @@ set.seed(124)
 problem_two_df = tibble(
     x = rnorm(1000),
     y = rnorm(1000), 
-    vec_logic = (x + y > 0)
+    vec_logical = (x + y > 0)
 )
   
-problem_two_df$vec_numeric = as.numeric(problem_two_df$vec_logic)
-problem_two_df$vec_factor = as.factor(problem_two_df$vec_logic)
+problem_two_df$vec_numeric = as.numeric(problem_two_df$vec_logical)
+problem_two_df$vec_factor = as.factor(problem_two_df$vec_logical)
 ```
+
+* The size ot the data set is `r nrow(problem_two_df)`.
+
+* The mean for the a random sample of size 1000 from a standard normal distribution is `r mean(problem_two_df$x)`.
+
+* The median for the a random sample of size 1000 from a standard normal distribution is `r median(problem_two_df$x)`.
+
+* The proporportion is of cases for which the logical vector is TRUE `r mean(problem_two_df$vec_logical)`.
 
 
 
