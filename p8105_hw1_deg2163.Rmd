@@ -87,7 +87,6 @@ library(tidyverse)
 
 
 ```{r df_create_two}
-
 ##set the seed to ensure reproducibility 
 set.seed(124)
 
@@ -95,10 +94,11 @@ set.seed(124)
 problem_two_df = tibble(
     x = rnorm(1000),
     y = rnorm(1000), 
-    vec_logical = (x + y > 0),
-    vec_numeric = as.numeric(problem_two_df$vec_logical),
-    vec_factor = as.factor(problem_two_df$vec_logical)
+    vec_logic = (x + y > 0)
 )
+  
+problem_two_df$vec_numeric = as.numeric(problem_two_df$vec_logic)
+problem_two_df$vec_factor = as.factor(problem_two_df$vec_logic)
 ```
 
 
