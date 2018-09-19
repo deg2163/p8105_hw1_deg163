@@ -25,7 +25,7 @@ set.seed(123)
 
 ## create data frame with four vectors 
 problem_one_df = tibble(
-  vec_numeric = runif(10, min = 0, max = 5), 
+  vec_numeric = runif(10, 0, 5), 
   vec_logical = (vec_numeric > 2),
   vec_char = c("My", "name", "is", "Diana", "Ballesteros", "Gonzalez", "and", "I", "love", "tacos."),
   vec_factor = factor(c("red", "orange", "yellow", "green", "blue", "orange", "purple", "indigo", "black", "grey"))
@@ -40,6 +40,23 @@ problem_one_df = tibble(
 
 
 - The mean of a (length-10) factor vector is `r mean(problem_one_df$vec_factor)` because you cannot take an average of categorical variables.
+
+```{r change_types}
+
+as.numeric(problem_one_df$vec_numeric)
+
+as.numeric(problem_one_df$vec_logical)
+
+as.numeric(problem_one_df$vec_char)
+
+as.numeric(problem_one_df$vec_factor)
+
+```
+
+```{r convert_char_factor_numeric}
+
+
+```
 
 # Problem 2
 Create a data frame comprised of:
