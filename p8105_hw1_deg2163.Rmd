@@ -15,22 +15,31 @@ Create a data frame comprised of:
 - A (length-10) character vector.
 - A (length-10) factor vector.
 
-```{r setup}
+```{r setup, include = FALSE}
 library(tidyverse)
+```
+
+```{r df_create}
+
+set.seed(123)
 
 ## create data frame with four vectors 
 problem_one_df = tibble(
-  vec_numeric = runif(10, 0, 5), 
-  vec_char = c("My", "name", "is", "Diana", "Ballesteros", "Gonzalez", "and", "I", "love", "tacos."),
+  vec_numeric = runif(10, min = 0, max = 5), 
   vec_logical = (vec_numeric > 2),
+  vec_char = c("My", "name", "is", "Diana", "Ballesteros", "Gonzalez", "and", "I", "love", "tacos."),
   vec_factor = factor(c("red", "orange", "yellow", "green", "blue", "orange", "purple", "indigo", "black", "grey"))
 ) 
 ```
 
-The mean is `r mean(problem_one_df$vec_numeric)`.
-The mean is `r mean(problem_one_df$vec_char)`.
-The mean is `r mean(problem_one_df$vec_logical)`.
-The mean is `r mean(problem_one_df$vec_factor)`.
+- The mean for the a random sample of size 10from a uniform [0,5] distribution is `r mean(problem_one_df$vec_numeric)`. I was able to get a mean value for this vector because it averaged the 10 random numbers that it reproduced. 
+
+- The mean for a logical vector indicating whether elements of the sample are greater than 2 is `r mean(problem_one_df$vec_logical)`. I was able to get a mean value for this vector because it calculated the proportion of True statements to False statments.
+
+- The mean of a (length-10) character vector is `r mean(problem_one_df$vec_char)` because you cannot take an average of character values. 
+
+
+- The mean of a (length-10) factor vector is `r mean(problem_one_df$vec_factor)` because you cannot take an average of categorical variables.
 
 # Problem 2
 Create a data frame comprised of:
@@ -40,14 +49,6 @@ Create a data frame comprised of:
 - A logical vector indicating whether the x + y > 0
 - A numeric vector created by coercing the above logical vector
 - A factor vector created by coercing the above logical vector
-
-Here's a **code chunk** that samples from 
-a _normal distribution_:
-
-```{r}
-samp = rnorm(100)
-length(samp)
-```
 
 
 
