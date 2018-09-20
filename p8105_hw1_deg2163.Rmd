@@ -7,7 +7,7 @@ output: github_document
 
 Homework Assignment 1 
 
-#**Problem 1**
+# **Problem 1**
 Create a data frame comprised of:
 
 * A random sample of size 10 from a uniform [0,5] distribution.
@@ -42,7 +42,7 @@ problem_one_df = tibble(
 
 * The mean of a (length-10) factor vector is `r mean(problem_one_df$vec_factor)` because you cannot take an average of categorical variables.
 
-###Explanation for what happens when your run as.numeric with the logical, character, and factor vectors
+### Explanation for what happens when your run as.numeric with the logical, character, and factor vectors
 ```{r change_types, results='hide'}
 ##convert logical, character, and factor to numeric
 
@@ -57,14 +57,14 @@ as.numeric(problem_one_df$vec_factor)
 * For the character vector, I received a warning message stating "NAs introduced by coercion."
 * For the factor vector, you get random numbers assigned to each factor. 
 
-###Converting from Character to Factor to Numeric
+### Converting from Character to Factor to Numeric
 ```{r convert_char_factor_numeric, results='hide'}
 as.factor(problem_one_df$vec_char)
 as.numeric(as.factor(problem_one_df$vec_char))
 ```
 For the conversion of a character to factor to numeric, I was ablw to obtain values that assigned a random number to each string of characters. 
 
-###Converting from Character to Factor to Numeric
+### Converting from Character to Factor to Numeric
 ```{r convert_factor_character_numeric, results='hide'}
 as.character(problem_one_df$vec_factor)
 as.numeric(as.character(problem_one_df$vec_factor))
