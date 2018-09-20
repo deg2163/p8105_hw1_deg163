@@ -116,10 +116,17 @@ Make a scatterplot of y vs x; color points using the logical variable (adding co
 Export your first scatterplot to your project directory using ggsave.
 ```{r}
 ## scatterplot of x and y
-ggplot(problem_two_df, aes(x = x, y = y)) + geom_point()
+ggplot(problem_two_df, aes(x = x, y = y, color = vec_logical)) + geom_point()
+ggsave("problem_two_df.pdf")
+
+##scatterplot of numeric variables
+ggplot(problem_two_df, aes(x = x, y = y, color = vec_numeric)) + geom_point()
+       
+##scatterplot of factor variables
+ggplot(problem_two_df, aes(x = x, y = y, color = vec_factor)) + geom_point()
 ```
 
-ggsave(problem_two_df, plot = last_plot()
+
 
 
 
