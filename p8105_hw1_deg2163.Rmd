@@ -5,15 +5,7 @@ date: 2018-09-20
 output: github_document
 ---
 
-Homework Assignment 1 
-
 # **Problem 1**
-Create a data frame comprised of:
-
-* A random sample of size 10 from a uniform [0,5] distribution.
-* A logical vector indicating whether elements of the sample are greater than 2.
-* A (length-10) character vector.
-* A (length-10) factor vector.
 
 ```{r setup, include = FALSE}
 library(tidyverse)
@@ -28,8 +20,10 @@ set.seed(123)
 problem_one_df = tibble(
   vec_numeric = runif(10, 0, 5), 
   vec_logical = (vec_numeric > 2),
-  vec_char = c("My", "name", "is", "Diana", "Ballesteros", "Gonzalez", "and", "I", "love", "tacos"),
-  vec_factor = factor(c("red", "orange", "yellow", "green", "blue", "orange", "purple", "indigo", "black", "grey"))
+  vec_char = c("My", "name", "is", "Diana", "Ballesteros", "Gonzalez", "and", 
+               "I", "love", "tacos"),
+  vec_factor = factor(c("red", "orange", "yellow", "green", "blue", "orange", 
+                        "purple", "indigo", "black", "grey"))
 ) 
 ```
 
@@ -70,19 +64,11 @@ as.numeric(as.character(problem_one_df$vec_factor))
 For the conversion of character to a factor to numeric, I received a warning message because it cannot produce a numeric value for a character vector. 
 
 # **Problem 2**
-Create a data frame comprised of:
-
-- x: a random sample of size 1000 from a standard Normal distribution
-- y: a random sample of size 1000 from a standard Normal distribution
-- A logical vector indicating whether the x + y > 0
-- A numeric vector created by coercing the above logical vector
-- A factor vector created by coercing the above logical vector
 
 ```{r problem_two_setup}
 ##load the library 
 library(tidyverse)
 ```
-
 
 ```{r df_create_two}
 ##set the seed to ensure reproducibility 
@@ -107,8 +93,7 @@ problem_two_df$vec_factor = as.factor(problem_two_df$vec_logical)
 
 * The median for the a random sample of size 1000 from a standard normal distribution is `r median(problem_two_df$x)`.
 
-* The proporportion of cases for which the logical vector is TRUE is `r  sum(str_count(problem_two_df$vec_logical, "TRUE")) / nrow(problem_two_df)`.
-
+* The proporportion of cases for which the logical vector is TRUE is `r  sum(problem_two_df$vec_logical) / nrow(problem_two_df)`.
 
 ## Creating Scatterplots
 
@@ -117,17 +102,17 @@ problem_two_df$vec_factor = as.factor(problem_two_df$vec_logical)
 ##scatterplot of x and y
 ggplot(problem_two_df, aes(x = x, y = y, color = vec_logical)) + geom_point()
 ggsave("scatterplot_x_y_logical.pdf")
-
-
 ```
+
+* The scatterplot of x and y using the logical variables where blue represents the values when x + y is greater than two. Since we used a logical variable, it makes sense that it automatically assigned the legend to represents all values where x + y > 2 as TRUE in one color. If it did not meet this criteria (i.e., x + y <= 2), the point was FALSE and in a different color.  
 
 ### Scatterplot X and Y using the numeric variable
 ```{r scatterplot_numeric}
 ##scatterplot of numeric variables
 ggplot(problem_two_df, aes(x = x, y = y, color = vec_numeric)) + geom_point()
-
 ```
 
+* The scatterplot of x and y using the numeric variable shows a gradient of blue colors as the legend. However, the numeric and logic model have the same output, so the scatterplots look exactly the same. The numeric and logic models have the same output because FALSE is automatically assigned a "0" where TRUE is automatically assigned a "1".
 
 ### Scatterplot X and Y using the factor variable
 ```{r scatterplot_factor}
@@ -135,7 +120,7 @@ ggplot(problem_two_df, aes(x = x, y = y, color = vec_numeric)) + geom_point()
 ggplot(problem_two_df, aes(x = x, y = y, color = vec_factor)) + geom_point()
 ```
 
-
+* Similarily, the scatterplot of x and y using the factor variables will display the same scatterplot as with the logic variable because the vector contains a set of numeric codes with character-valued levels, which are TRUE and FAlSE. Although the TRUE and FALSE legend truly represent "1" and "0," respectively. 
 
 
 
