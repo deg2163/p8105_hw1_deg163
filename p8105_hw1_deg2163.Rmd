@@ -47,9 +47,7 @@ problem_one_df = tibble(
 ##convert logical, character, and factor to numeric
 
 as.numeric(problem_one_df$vec_logical)
-
 as.numeric(problem_one_df$vec_char)
-
 as.numeric(problem_one_df$vec_factor)
 ```
 
@@ -96,7 +94,8 @@ problem_two_df = tibble(
     y = rnorm(1000), 
     vec_logical = (x + y > 0)
 )
-  
+
+##add two columns, numeric and factor vectors
 problem_two_df$vec_numeric = as.numeric(problem_two_df$vec_logical)
 problem_two_df$vec_factor = as.factor(problem_two_df$vec_logical)
 ```
@@ -111,17 +110,27 @@ problem_two_df$vec_factor = as.factor(problem_two_df$vec_logical)
 * The proporportion of cases for which the logical vector is TRUE is `r  sum(str_count(problem_two_df$vec_logical, "TRUE")) / nrow(problem_two_df)`.
 
 
-Make a scatterplot of y vs x; color points using the logical variable (adding color = ... inside of aes in your ggplot code should help). Make a second and third scatterplot that color points using the numeric and factor variables, respectively, and comment on the color scales.
+## Creating Scatterplots
 
-Export your first scatterplot to your project directory using ggsave.
-```{r}
-## scatterplot of x and y
+### Scatterplot of X and Y using the logical variable
+```{r scatterplot_logical}
+##scatterplot of x and y
 ggplot(problem_two_df, aes(x = x, y = y, color = vec_logical)) + geom_point()
-ggsave("problem_two_df.pdf")
+ggsave("scatterplot_x_y_logical.pdf")
 
+
+```
+
+### Scatterplot X and Y using the numeric variable
+```{r scatterplot_numeric}
 ##scatterplot of numeric variables
 ggplot(problem_two_df, aes(x = x, y = y, color = vec_numeric)) + geom_point()
-       
+
+```
+
+
+### Scatterplot X and Y using the factor variable
+```{r scatterplot_factor}
 ##scatterplot of factor variables
 ggplot(problem_two_df, aes(x = x, y = y, color = vec_factor)) + geom_point()
 ```
