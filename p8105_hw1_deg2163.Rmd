@@ -88,7 +88,7 @@ library(tidyverse)
 
 ```{r df_create_two}
 ##set the seed to ensure reproducibility 
-set.seed(124)
+set.seed(1)
 
 ##create a new df for problem two
 problem_two_df = tibble(
@@ -101,14 +101,14 @@ problem_two_df$vec_numeric = as.numeric(problem_two_df$vec_logical)
 problem_two_df$vec_factor = as.factor(problem_two_df$vec_logical)
 ```
 
-* The size ot the data set is `r nrow(problem_two_df)`.
+* The size ot the data set is rows = `r nrow(problem_two_df)` and columns = 
+`r ncol(problem_two_df)`
 
 * The mean for the a random sample of size 1000 from a standard normal distribution is `r mean(problem_two_df$x)`.
 
 * The median for the a random sample of size 1000 from a standard normal distribution is `r median(problem_two_df$x)`.
 
-* The proporportion of cases for which the logical vector is TRUE is `r count(problem_two_df, vec_logical = 'TRUE') / nrow(problem_two_df)`.
-
+* The proporportion of cases for which the logical vector is TRUE is `r  sum(str_count(problem_two_df$vec_logical, "TRUE")) / nrow(problem_two_df)`.
 
 
 Make a scatterplot of y vs x; color points using the logical variable (adding color = ... inside of aes in your ggplot code should help). Make a second and third scatterplot that color points using the numeric and factor variables, respectively, and comment on the color scales.
