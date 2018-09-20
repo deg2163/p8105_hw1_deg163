@@ -8,13 +8,14 @@ output: github_document
 # **Problem 1**
 
 ```{r setup, include = FALSE}
+#loading the library
 library(tidyverse)
 ```
 
 ```{r df_create}
 
 ## set the seed to ensure reproducibility
-set.seed(123)
+set.seed(1)
 
 ## create data frame with four vectors 
 problem_one_df = tibble(
@@ -29,7 +30,7 @@ problem_one_df = tibble(
 
 * The mean for the a random sample of size 10 from a uniform [0,5] distribution is `r mean(problem_one_df$vec_numeric)`. I was able to get a mean value for this vector because it averaged the 10 random numbers that it reproduced. 
 
-* The mean for a logical vector indicating whether elements of the sample are greater than 2 is `r mean(problem_one_df$vec_logical)`. I was able to get a mean value for this vector because it calculated the proportion of true statements out of the 10.
+* The mean for a logical vector indicating whether elements of the sample are greater than 2 is `r mean(problem_one_df$vec_logical)`. I was able to get a mean value for this vector because it used TRUE values as "1" and False values as "0". Thus, it took the mean of the 1s and 0s that came from the TRUE and FALSE statements. 
 
 * The mean of a (length-10) character vector is `r mean(problem_one_df$vec_char)` because you cannot take an average of character values. 
 
@@ -37,17 +38,17 @@ problem_one_df = tibble(
 * The mean of a (length-10) factor vector is `r mean(problem_one_df$vec_factor)` because you cannot take an average of categorical variables.
 
 ### Explanation for what happens when your run as.numeric with the logical, character, and factor vectors
-```{r change_types, results='hide'}
-##convert logical, character, and factor to numeric
-
+```{r change_type, results='hide'}
+##convert logical, character, and factor vectors to numeric
 as.numeric(problem_one_df$vec_logical)
 as.numeric(problem_one_df$vec_char)
 as.numeric(problem_one_df$vec_factor)
 ```
+* For the logical vector, I had not problem because it converted the true and false statements to numbers where, 0 = False and 1 = True, and then took the mean value of those numbers.  
 
-* For the logical vector, I had not problem because it converted the true and false statements to numbers where, 0 = False and 1 = True. 
-* For the character vector, I received a warning message stating "NAs introduced by coercion."
-* For the factor vector, you get random numbers assigned to each factor. 
+* For the character vector, I received a warning message because you cannot take a mean of categorical variables. 
+
+* For the factor vector, you get random numbers assigned to each factor then taking the mean of those numbers. 
 
 ### Converting from Character to Factor to Numeric
 ```{r convert_char_factor_numeric, results='hide'}
@@ -120,7 +121,7 @@ ggplot(problem_two_df, aes(x = x, y = y, color = vec_numeric)) + geom_point()
 ggplot(problem_two_df, aes(x = x, y = y, color = vec_factor)) + geom_point()
 ```
 
-* Similarily, the scatterplot of x and y using the factor variables will display the same scatterplot as with the logic variable because the vector contains a set of numeric codes with character-valued levels, which are TRUE and FAlSE. Although the TRUE and FALSE legend truly represent "1" and "0," respectively. 
+* Similarily, the scatterplot of x and y using the factor variables will display the same scatterplot as with the logic variable because the vector contains a set of numeric codes with character-valued levels, which are TRUE and FALSE. Although the TRUE and FALSE legend truly represents "1" and "0," respectively. 
 
 
 
