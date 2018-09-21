@@ -121,7 +121,7 @@ ggplot(problem_two_df, aes(x = x, y = y, color = vec_numeric)) + geom_point()
 ggplot(problem_two_df, aes(x = x, y = y, color = vec_factor)) + geom_point()
 ```
 
-* Similarily, the scatterplot of x and y using the factor variables will display the same scatterplot as with the logic variable because the vector contains a set of numeric codes with character-valued levels, which are TRUE and FALSE. Although the TRUE and FALSE legend truly represents "1" and "0," respectively. 
+* Similarily, the scatterplot of x and y using the factor variable will display the same scatterplot as with the logic variable because the vector contains a set of numeric codes with character-valued levels, which are TRUE and FALSE. Although the TRUE and FALSE legend truly represents "1" and "0," respectively. 
 
 
 
