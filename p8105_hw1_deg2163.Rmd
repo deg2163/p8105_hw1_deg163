@@ -7,7 +7,7 @@ output: github_document
 
 # **Problem 1**
 
-```{r setup, include = FALSE}
+```{r setup}
 #loading the library
 library(tidyverse)
 ```
@@ -55,9 +55,9 @@ as.numeric(problem_one_df$vec_factor)
 as.factor(problem_one_df$vec_char)
 as.numeric(as.factor(problem_one_df$vec_char))
 ```
-For the conversion of a character to factor to numeric, I was ablw to obtain values that assigned a random number to each string of characters. 
+For the conversion of a character to factor to numeric, I was able to obtain values that assigned a random number to each string of characters. 
 
-### Converting from Character to Factor to Numeric
+### Converting from Factor to Character to Numeric
 ```{r convert_factor_character_numeric, results='hide'}
 as.character(problem_one_df$vec_factor)
 as.numeric(as.character(problem_one_df$vec_factor))
